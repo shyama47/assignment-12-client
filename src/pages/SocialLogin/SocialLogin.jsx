@@ -3,17 +3,29 @@
 import { toast } from "react-hot-toast";
 import { useNavigate, useLocation } from "react-router";
 import UseAuth from "../../hooks/UseAuth";
+import useAxiosInstance from "../../hooks/useAxiosInstance";
 
 const SocialLogin = () => {
 const {googleLogin}=UseAuth();
+const axiosInstance =useAxiosInstance();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {
+      .then(async(result) => {
+        const user =result.user;
+        console.log(user);
         toast.success("Google Login successful!");
+        const userInfo ={
+          email:user.email,
+          role:'user',
+          created_at:new Date().toISOString(),
+          last_log_in:new Date().toISOString()
+        }
+        const res =await axiosInstance.post('/users',userInfo)
+        console.log('user update info',res.data);
         navigate(from, { replace: true });
       })
       .catch((error) => {
