@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { WithContext as ReactTags } from "react-tag-input";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UseAuth from "../../../hooks/UseAuth";
+import React from "react";
 
 
 const AddProduct = () => {
@@ -26,7 +27,29 @@ const AddProduct = () => {
     setTags([...tags, tag]);
   };
 
-  // ✅ mutation for adding product
+  // update
+  const onSubmit = (data) => {
+  // Map to plain strings
+  const formattedTags = tags.map(t => t.text ? t.text : t).filter(Boolean);
+
+  console.log("Tags before submit:", formattedTags); // Debug
+
+  const newProduct = {
+    name: data.name,
+    description: data.description,
+    image: data.image,
+    externalLink: data.externalLink,
+    tags: formattedTags, // array of strings
+    owner_name: user?.displayName,
+    owner_email: user?.email,
+    owner_image: user?.photoURL,
+    upvotes: 0,
+    timestamp: new Date(),
+  };
+
+  mutation.mutate(newProduct);
+};
+
   const mutation = useMutation({
     mutationFn: async (newProduct) => {
       const res = await axiosSecure.post("/products", newProduct);
@@ -46,7 +69,7 @@ const AddProduct = () => {
       });
 
       // 🔹 Redirect user to My Products page
-      navigate("/my-products");
+      navigate("/dashboard/my-products");
     },
     onError: () => {
       Swal.fire({
@@ -58,29 +81,11 @@ const AddProduct = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    const newProduct = {
-      name: data.name,
-      description: data.description,
-      image: data.image,
-      externalLink: data.externalLink,
-      tags: tags.map((t) => t.text),
-      owner: {
-        name: user?.displayName,
-        email: user?.email,
-        image: user?.photoURL,
-      },
-      upvotes: 0,
-      timestamp: new Date(),
-    };
-
-    mutation.mutate(newProduct);
-  };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-600 px-4">
-      <div className="w-full max-w-2xl bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8">
-        <h2 className="text-3xl font-extrabold text-center text-indigo-700 mb-6">
+    <div className="flex justify-center items-center my-10 px-4 ">
+      <div className="w-full max-w-2xl mx-auto  bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-pink-400">
+        <h2 className="text-3xl font-extrabold text-center  mb-6">
           🚀 Add New Product
         </h2>
 
@@ -93,7 +98,7 @@ const AddProduct = () => {
             <input
               {...register("name", { required: true })}
               placeholder="Enter product name"
-              className="w-full p-3 border-2 border-teal-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full p-3 border-2 border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
             />
           </div>
 
@@ -105,7 +110,7 @@ const AddProduct = () => {
             <input
               {...register("image", { required: true })}
               placeholder="https://example.com/product.png"
-              className="w-full p-3 border-2 border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border-2 border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
             />
           </div>
 
@@ -118,7 +123,7 @@ const AddProduct = () => {
               {...register("description", { required: true })}
               placeholder="Write a short description"
               rows={3}
-              className="w-full p-3 border-2 border-indigo-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full p-3 border-2 border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
             />
           </div>
 
@@ -131,7 +136,7 @@ const AddProduct = () => {
               <input
                 value={user?.displayName || ""}
                 readOnly
-                className="w-full p-3 border-2 border-gray-300 rounded-xl bg-gray-100 cursor-not-allowed"
+                className="w-full p-3 border-2 border-pink-200 rounded-xl bg-pink-50 cursor-not-allowed"
               />
             </div>
             <div>
@@ -141,7 +146,7 @@ const AddProduct = () => {
               <input
                 value={user?.email || ""}
                 readOnly
-                className="w-full p-3 border-2 border-gray-300 rounded-xl bg-gray-100 cursor-not-allowed"
+                className="w-full p-3 border-2 border-pink-200 rounded-xl bg-pink-50 cursor-not-allowed"
               />
             </div>
             <div>
@@ -151,7 +156,7 @@ const AddProduct = () => {
               <input
                 value={user?.photoURL || ""}
                 readOnly
-                className="w-full p-3 border-2 border-gray-300 rounded-xl bg-gray-100 cursor-not-allowed"
+                className="w-full p-3 border-2 border-pink-200 rounded-xl bg-pink-50 cursor-not-allowed"
               />
             </div>
           </div>
@@ -185,7 +190,7 @@ const AddProduct = () => {
             <input
               {...register("externalLink")}
               placeholder="https://yourwebsite.com"
-              className="w-full p-3 border-2 border-teal-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full p-3 border-2 border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300"
             />
           </div>
 
@@ -204,3 +209,5 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
+

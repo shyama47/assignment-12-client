@@ -33,7 +33,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen  px-4">
+    <div className="flex justify-center items-center min-h-screen  px-4 my-10">
       <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded-xl p-6">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-">Login Now!!</h2>
 

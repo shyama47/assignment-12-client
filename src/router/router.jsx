@@ -10,6 +10,8 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import AddProduct from '../pages/Dashboard/AddProduct/AddProduct';
 import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
 import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
+import MyProduct from '../pages/Dashboard/MyProduct/MyProduct';
+import UpdateProduct from '../pages/Dashboard/UpdateProduct/UpdateProduct';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -43,6 +45,14 @@ export const router=createBrowserRouter([
             {
                 path:'my-profile',
                 Component:MyProfile
+            },
+            {
+                path:'my-products',
+                Component:MyProduct
+            },
+            {
+                path:'update-product/:id',
+                Component:UpdateProduct
             },
             {
                 path:'manage-users',
