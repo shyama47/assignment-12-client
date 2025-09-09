@@ -46,10 +46,10 @@ export const router=createBrowserRouter([
                 path:'my-profile',
                 Component:MyProfile
             },
-            {
-                path:'my-products',
-                Component:MyProduct
-            },
+            // {
+            //     path:'my-products',
+            //     Component:MyProduct
+            // },
             {
                 path:'update-product/:id',
                 Component:UpdateProduct
