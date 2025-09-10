@@ -12,6 +12,7 @@ import MyProfile from '../pages/Dashboard/MyProfile/MyProfile';
 import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
 import MyProduct from '../pages/Dashboard/MyProduct/MyProduct';
 import UpdateProduct from '../pages/Dashboard/UpdateProduct/UpdateProduct';
+import ProductReviewQueue from '../pages/Dashboard/ProductReviewQueue/ProductReviewQueue';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -53,6 +54,10 @@ export const router=createBrowserRouter([
             {
                 path:'update-product/:id',
                 Component:UpdateProduct
+            },
+            {
+                path:'review-queue',
+                Component:ProductReviewQueue
             },
             {
                 path:'manage-users',
