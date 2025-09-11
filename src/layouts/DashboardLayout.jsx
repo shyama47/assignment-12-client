@@ -15,8 +15,11 @@ import {
   FaStar,
   FaProductHunt,
 } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import UseAuth from "../hooks/UseAuth";
 
 const DashboardLayout = () => {
+  const { logOut } = UseAuth()
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -60,60 +63,70 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-2">
           {/* Common Links */}
-          <li>
+          <h1 className="text-2xl font-bold ml-2">Dashboard</h1>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/">
               <FaHome className="inline-block" /> Home
             </NavLink>
           </li>
 
           {/* User Routes */}
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/my-profile" className="flex items-center gap-2">
               <FaUser /> My Profile
             </NavLink>
           </li>
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/add-product" className="flex items-center gap-2">
               <FaPlusCircle /> Add Product
             </NavLink>
           </li>
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/my-products" className="flex items-center gap-2">
               <FaList /> My Products
             </NavLink>
           </li>
 
           {/* Moderator Routes */}
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/review-queue" className="flex items-center gap-2">
               <FaCheckCircle /> Product Review Queue
             </NavLink>
           </li>
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/reported-contents" className="flex items-center gap-2">
               <FaExclamationTriangle /> Reported Contents
             </NavLink>
           </li>
 
           {/* Admin Routes */}
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/statistics" className="flex items-center gap-2">
               <FaChartBar /> Statistics
             </NavLink>
           </li>
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/manage-users" className="flex items-center gap-2">
               <FaUsers /> Manage Users
             </NavLink>
           </li>
-          <li>
+          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/manage-coupons" className="flex items-center gap-2">
               <FaGift /> Manage Coupons
             </NavLink>
           </li>
+          <li className="mt-24">
+            <button
+              onClick={logOut}
+              className="w-full text-left px-4 py-2 bg-[#FF6B6B] text-white "
+            >
+             <FiLogOut /> Logout
+            </button>
+          </li>
         </ul>
+        
       </div>
     </div>
   );

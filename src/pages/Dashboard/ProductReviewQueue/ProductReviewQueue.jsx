@@ -89,13 +89,13 @@ const ProductReviewQueue = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="p-6 bg-white rounded-2xl shadow-lg w-full max-w-4xl mx-auto my-10 border border-green-200">
+    <div className="p-6 bg-white rounded-2xl shadow-lg w-[95%] sm:w-[90%] md:w-[80%] lg:max-w-3xl mx-auto my-10 border border-green-200">
       <h2 className="text-2xl font-bold mb-4">📌 Product Review Queue</h2>
       {products.length === 0 ? (
         <p className="text-gray-500">No pending products found.</p>
       ) : (
         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-          <table className="table w-full min-w-[600px]">
+          <table className="table w-full ">
             <thead>
               <tr className="bg-gray-300 text-black text-sm md:text-base">
                  <th className="">Product Name</th>
@@ -112,10 +112,10 @@ const ProductReviewQueue = () => {
                     {product.status}
                   </td>
                   <td className=" flex  justify-center gap-2">
-                    {/* ✅ View Details */}
+                    {/*  View Details */}
                     <Link
-                      to={`/products/${product._id}`}
-                      className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400 text-sm"
+                      to={`/singleproduct/${product._id}`}
+                      className="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400 text-sm truncate"
                     >
                       View Details
                     </Link>
@@ -132,10 +132,10 @@ const ProductReviewQueue = () => {
                         )
                       }
                       disabled={product.isFeatured}
-                      className={`px-2 rounded text-sm ${
+                      className={`px-2 rounded text-sm truncate ${
                         product.isFeatured
-                          ? "bg-yellow-200 cursor-not-allowed"
-                          : "bg-yellow-400 hover:bg-yellow-500 truncate"
+                          ? "bg-yellow-200 cursor-not-allowed "
+                          : "bg-yellow-400 hover:bg-yellow-500"
                       }`}
                     >
                       {product.isFeatured ? "Allready Featured" : "Make Featured"}

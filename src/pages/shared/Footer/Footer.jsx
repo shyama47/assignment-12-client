@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="bg-[#FFE66D] text-[#1A535C] py-10 px-6">
+    <footer className="bg-[#FFE66D] text-[#1A535C] pb-5 pt-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
 
         {/* Logo & Description */}
@@ -53,7 +53,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="mt-8 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-8">
+      <div className="mt-4 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-4">
         © {new Date().getFullYear()} MyShop. All Rights Reserved.
       </div>
     </footer>

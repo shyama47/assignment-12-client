@@ -29,7 +29,7 @@ const BannerSlider = () => {
     {
       id: 2,
       img: slider1,
-      title: "Share Your Creations with the Community 🌐",
+      title: "Share Your Creations with the Community ",
       desc: "Submit your own tech products and get recognition from a global community of enthusiasts.",
     },
     {
@@ -41,13 +41,13 @@ const BannerSlider = () => {
   ];
 
   return (
-    <div className="w-full mb-10 min-h-[800px]">
+    <div className="w-full mb-10 ">
       <Slider {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="relative">
             {/* Background image */}
             <div
-              className="md:h-[80vh] bg-cover bg-center flex flex-col items-center justify-center text-center text-white px-6"
+              className="md:min-h-[70vh] min-h-[60vh] bg-cover bg-center flex flex-col items-center justify-center text-center text-white px-6"
               style={{ backgroundImage: `url(${slide.img})` }}
             >
               {/* Overlay */}

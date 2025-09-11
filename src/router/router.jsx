@@ -13,6 +13,9 @@ import ManageUsers from '../pages/Dashboard/ManageUsers/ManageUsers';
 import MyProduct from '../pages/Dashboard/MyProduct/MyProduct';
 import UpdateProduct from '../pages/Dashboard/UpdateProduct/UpdateProduct';
 import ProductReviewQueue from '../pages/Dashboard/ProductReviewQueue/ProductReviewQueue';
+import ProductDetails from '../pages/ProductDetails/ProductDetails';
+import ReportedContents from '../pages/Dashboard/ReportedContents/ReportedContents';
+import ProductsPage from '../pages/ProductsPage/ProductsPage ';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -22,6 +25,14 @@ export const router=createBrowserRouter([
             {
                 index:true,
                 Component:Home
+            },
+            {
+                path:'products',
+                Component:ProductsPage
+            },
+            {
+                path:'singleproduct/:id',
+                Component:ProductDetails
             },
             {
                 path:'signup',
@@ -58,6 +69,10 @@ export const router=createBrowserRouter([
             {
                 path:'review-queue',
                 Component:ProductReviewQueue
+            },
+            {
+             path:'reported-contents',
+             Component:ReportedContents
             },
             {
                 path:'manage-users',

@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UseAuth from "../../../hooks/UseAuth";
+import Loading from "../../shared/Loading/Loading";
 
 
 const MyProducts = () => {
@@ -49,7 +50,7 @@ const MyProducts = () => {
     });
   };
 
-  if (isLoading) return <p className="text-center">Loading...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="w-full max-w-3xl mx-auto  p-6  my-16">

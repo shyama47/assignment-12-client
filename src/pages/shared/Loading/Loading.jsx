@@ -1,11 +1,11 @@
 import React from "react";
-import { ClipLoader } from "react-spinners";
+import { RingLoader } from "react-spinners";
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center h-[70vh]">
-      <ClipLoader color="#FF6B6B" size={80} />
-    </div>
+    <div className="flex justify-center items-center py-20">
+        <RingLoader color="#FF6B6B"  size={100} />
+      </div>
   );
 };
 
