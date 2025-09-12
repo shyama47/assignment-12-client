@@ -16,6 +16,8 @@ import ProductReviewQueue from '../pages/Dashboard/ProductReviewQueue/ProductRev
 import ProductDetails from '../pages/ProductDetails/ProductDetails';
 import ReportedContents from '../pages/Dashboard/ReportedContents/ReportedContents';
 import ProductsPage from '../pages/ProductsPage/ProductsPage ';
+import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
+import TermsAndConditions from '../pages/TermsAndConditions/TermsAndConditions';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -41,7 +43,15 @@ export const router=createBrowserRouter([
             {
                 path:'login',
                 Component:SignIn
-            }
+            },
+            {
+                path:'privacy',
+                Component:PrivacyPolicy
+            },
+            {
+                path:'terms',
+                Component:TermsAndConditions
+            },
         ]
     },
     {
