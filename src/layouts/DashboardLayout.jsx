@@ -17,9 +17,11 @@ import {
 } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import UseAuth from "../hooks/UseAuth";
+import UseUserRole from "../hooks/UseUserRole";
 
 const DashboardLayout = () => {
-  const { logOut } = UseAuth()
+  const { logOut } = UseAuth();
+  const { role, roleLoading } = UseUserRole();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -72,7 +74,11 @@ const DashboardLayout = () => {
             </NavLink>
           </li>
 
-          {/* User Routes */}
+          {
+            !roleLoading && role === 'user' &&
+            <>
+
+            {/* User Routes */}
           <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/my-profile" className="flex items-center gap-2">
               <FaUser /> My Profile
@@ -88,9 +94,14 @@ const DashboardLayout = () => {
               <FaList /> My Products
             </NavLink>
           </li>
+            </>
+          }
 
           {/* Moderator Routes */}
-          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
+          {
+             !roleLoading && role === 'moderator' &&
+             <>
+             <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/review-queue" className="flex items-center gap-2">
               <FaCheckCircle /> Product Review Queue
             </NavLink>
@@ -100,9 +111,14 @@ const DashboardLayout = () => {
               <FaExclamationTriangle /> Reported Contents
             </NavLink>
           </li>
+             </>
+          }
 
           {/* Admin Routes */}
-          <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
+         {
+           !roleLoading && role === 'admin' &&
+           <>
+            <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/statistics" className="flex items-center gap-2">
               <FaChartBar /> Statistics
             </NavLink>
@@ -117,6 +133,8 @@ const DashboardLayout = () => {
               <FaGift /> Manage Coupons
             </NavLink>
           </li>
+           </>
+         }
           <li className="mt-24">
             <button
               onClick={logOut}
@@ -133,3 +151,4 @@ const DashboardLayout = () => {
 };
 
 export default DashboardLayout;
+

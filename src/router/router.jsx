@@ -18,6 +18,12 @@ import ReportedContents from '../pages/Dashboard/ReportedContents/ReportedConten
 import ProductsPage from '../pages/ProductsPage/ProductsPage ';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from '../pages/TermsAndConditions/TermsAndConditions';
+import Contact from '../pages/Contact/Contact';
+import Forbidden from '../pages/Forbidden/Forbidden';
+import ModeratorRoute from '../PrivateRoute/ModeratorRoute';
+import AdminRoute from '../PrivateRoute/AdminRoute';
+import Statistics from '../pages/Dashboard/Statistics/Statistics';
+import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -34,7 +40,10 @@ export const router=createBrowserRouter([
             },
             {
                 path:'singleproduct/:id',
-                Component:ProductDetails
+                element:<PrivateRoute>
+                <ProductDetails></ProductDetails>
+                </PrivateRoute>
+               
             },
             {
                 path:'signup',
@@ -52,6 +61,14 @@ export const router=createBrowserRouter([
                 path:'terms',
                 Component:TermsAndConditions
             },
+            {
+                path:'contact',
+                Component:Contact
+            },
+            {
+                path:'forbidden',
+                Component:Forbidden
+            }
         ]
     },
     {
@@ -60,6 +77,10 @@ export const router=createBrowserRouter([
             <DashboardLayout></DashboardLayout>
         </PrivateRoute>,
         children:[
+            {
+                index:true,
+                Component:DashboardHome
+            },
             {
                 path:'add-product',
                 Component:AddProduct
@@ -76,17 +97,31 @@ export const router=createBrowserRouter([
                 path:'update-product/:id',
                 Component:UpdateProduct
             },
+            // moderator route
             {
                 path:'review-queue',
-                Component:ProductReviewQueue
+                element:<ModeratorRoute>
+                    <ProductReviewQueue/>
+                </ModeratorRoute>
             },
             {
              path:'reported-contents',
-             Component:ReportedContents
+             element:<ModeratorRoute>
+                <ReportedContents/>
+             </ModeratorRoute>
             },
             {
                 path:'manage-users',
-                Component:ManageUsers
+                element:<AdminRoute>
+                    <ManageUsers></ManageUsers>
+                </AdminRoute>
+               
+            },
+            {
+                path:'statistics',
+                element:<AdminRoute>
+                    <Statistics></Statistics>
+                </AdminRoute>
             }
         ]
     }

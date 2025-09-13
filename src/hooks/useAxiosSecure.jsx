@@ -1,9 +1,42 @@
-import React from 'react';
 import axios from 'axios';
-const axiosSecure =axios.create({
-    baseURL:`http://localhost:5000`
-})
+import React from 'react';
+
+// import { useNavigate } from 'react-router';
+// import UseAuth from './UseAuth';
+
+const axiosSecure = axios.create({
+    baseURL: 'http://localhost:5000'
+});
 const useAxiosSecure = () => {
+    // const { user, logOut } = UseAuth();
+    // const navigate = useNavigate();
+    // axiosSecure.interceptors.request.use(config => {
+    //     config.headers.Authorization = `Bearer ${user.accessToken}`
+    //     return config;
+    // }, error => {
+    //     return Promise.reject(error);
+    // })
+
+    // axiosSecure.interceptors.response.use(res => {
+    //     return res;
+    // }, error => {
+    //     console.log('inside res interceptor', error.status)
+    //     const status = error.status;
+    //     if (status === 403) {
+    //         navigate('/forbidden')
+    //     }
+    //     else if(status === 401){
+    //          logOut()
+    //             .then(() =>{
+    //         navigate('/login')
+    //             })
+    //          .catch(() =>{
+                
+    //          })
+            
+    //     }
+    //     return Promise.reject(error)
+    // })
     return axiosSecure;
 };
 

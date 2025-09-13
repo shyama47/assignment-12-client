@@ -53,7 +53,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="mt-4 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-4">
+      <div className="mt-4 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-7">
         © {new Date().getFullYear()} MyShop. All Rights Reserved.
       </div>
     </footer>

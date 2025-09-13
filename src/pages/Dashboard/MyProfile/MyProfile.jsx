@@ -5,6 +5,7 @@ import UseAuth from "../../../hooks/UseAuth";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import Loading from "../../shared/Loading/Loading";
 
 // 🔑 Stripe Public Key from .env
 const stripePromise = loadStripe(import.meta.env.VITE_payment_key);
@@ -25,7 +26,7 @@ const MyProfile = () => {
     enabled: !!user?.email,
   });
 
-  if (isLoading) return <p className="text-center">Loading...</p>;
+  if (isLoading) return <Loading/>
 
   return (
     <div className="flex justify-center items-center my-10 px-4">
@@ -38,7 +39,7 @@ const MyProfile = () => {
         />
 
         {/* User Name + Email */}
-        <h2 className="text-2xl font-bold mt-4">{user?.displayName}</h2>
+        <h2 className="text-2xl font-bold my-4">{user?.displayName}</h2>
         <p className="text-gray-600">{user?.email}</p>
 
         {/* Membership Status */}
@@ -49,14 +50,16 @@ const MyProfile = () => {
             </p>
           </div>
         ) : (
-          <div className="mt-6">
+          <div className="mt-4">
             <button
               onClick={() => setShowModal(true)}
-              className="px-6 py-3 text-lg font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl shadow-lg hover:scale-105 transition-all"
+              className="px-6 py-3 text-lg font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl shadow-lg hover:scale-105 transition-all mb-4"
             >
               Subscribe $20
             </button>
+            <p>Status : Unsubscribe</p>
           </div>
+          
         )}
 
         {/* Stripe Checkout Modal */}

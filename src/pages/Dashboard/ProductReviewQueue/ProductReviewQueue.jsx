@@ -138,7 +138,7 @@ const ProductReviewQueue = () => {
                           : "bg-yellow-400 hover:bg-yellow-500"
                       }`}
                     >
-                      {product.isFeatured ? "Allready Featured" : "Make Featured"}
+                      {product.isFeatured ? "Already Featured" : "Make Featured"}
                     </button>
 
                     {/* ✅ Accept */}

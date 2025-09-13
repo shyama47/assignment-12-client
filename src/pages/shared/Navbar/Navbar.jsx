@@ -188,7 +188,7 @@ const Navbar = () => {
     <nav className="bg-[#FFE66D] shadow-md ">
       <div className="flex justify-between px-4 py-3 items-center">
         {/* Left: Logo */}
-        <Link to="/" className="text-2xl font-bold text-[#1A535C]">
+        <Link to="/" className="text-2xl font-bold text-[#1A535C] ">
           AppOrbit
         </Link>
 

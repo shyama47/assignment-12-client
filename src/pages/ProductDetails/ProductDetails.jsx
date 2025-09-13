@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import UseAuth from "../../hooks/UseAuth";
@@ -80,7 +80,7 @@ const ProductDetails = () => {
     form.reset();
   };
 
-  if (isLoading) return <Loading/>
+  if (isLoading) return <Loading />
 
   const alreadyReported = product?.reportedUsers?.includes(user?.email);
 
@@ -108,7 +108,7 @@ const ProductDetails = () => {
           </div>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-4 mt-4">
+          <div className="flex items-center gap-4 my-4">
             <button
               onClick={() => handleUpvote(product)}
               disabled={
@@ -129,6 +129,18 @@ const ProductDetails = () => {
               <FaFlag /> {alreadyReported ? "Reported" : "Report"}
             </button>
           </div>
+          {/* External Link */}
+          {product?.externalLink && (
+            <Link 
+              to={product.externalLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+            >
+              Visit Website
+            </Link>
+          )}
+
         </div>
       </div>
 
@@ -198,7 +210,7 @@ const ProductDetails = () => {
               />
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+                className="bg-gradient-to-r from-[#FF6B6B] to-[#FFE66D] text-white px-4 py-2 rounded-lg"
               >
                 Submit Review
               </button>

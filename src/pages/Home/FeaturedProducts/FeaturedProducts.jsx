@@ -70,7 +70,7 @@ const FeaturedProducts = () => {
               className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
                 user?.email === product.owner_email
                   ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-600 text-white"
+                  : "bg-gradient-to-l from-[#FF6B6B] to-[#FFE66D] text-white"
               }`}
             >
               <FaArrowUp />

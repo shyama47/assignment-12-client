@@ -70,12 +70,12 @@ const SignUp = () => {
     return (
         <div className="flex justify-center items-center min-h-screen px-4 my-16" >
             <div className="w-full max-w-sm  mx-auto bg-white shadow-lg rounded-xl p-6">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">Create Account Now</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-[#1A535C]">Create Account Now</h2>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     {/* name field */}
                     <div>
-                        <label className="block text-neutral font-bold mb-2">User Name</label>
+                        <label className="block text-[#1A535C] font-bold mb-2">User Name</label>
                         <input
                             {...register("name", { required: true })}
                             placeholder="User Name"
@@ -86,7 +86,7 @@ const SignUp = () => {
 
                     {/* email field */}
                     <div>
-                        <label className="block text-neutral font-bold mb-2">Email</label>
+                        <label className="block text-[#1A535C] font-bold mb-2">Email</label>
                         <input
                             {...register("email", { required: true })}
                             placeholder="Enter Your Email"
@@ -97,7 +97,7 @@ const SignUp = () => {
 
                     {/* password field */}
                     <div>
-                        <label className="block text-neutral font-bold mb-2">Password</label>
+                        <label className="block text-[#1A535C] font-bold mb-2">Password</label>
                         <input
             {...register("password", {
               required: "Password is required",
@@ -121,7 +121,7 @@ const SignUp = () => {
 
                     {/* image field */}
                     <div>
-                        <label className="block text-neutral font-bold mb-2">Photo</label>
+                        <label className="block text-[#1A535C] font-bold mb-2">Photo</label>
 
                         <input
                             type="file"
@@ -134,7 +134,7 @@ const SignUp = () => {
                     <button
                         type="submit"
                         disabled={!profilePic}
-                        className="w-full py-2 rounded-lg bg-[#4ECDC4] text-white font-semibold hover:bg-[#1A535C] transition-all duration-300"
+                        className="w-full py-2 rounded-lg bg-[#4ECDC4] text-white font-semibold  transition-all duration-300"
                     >
                         Sign Up
                     </button>

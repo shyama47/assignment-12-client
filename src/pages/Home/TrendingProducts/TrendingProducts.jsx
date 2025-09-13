@@ -1,18 +1,16 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-
 import { FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router";
-import { RingLoader } from "react-spinners";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useUpvote from "../../../hooks/useUpvote";
+// import useUpvote from "../../../hooks/useUpvote";
 import Loading from "../../shared/Loading/Loading";
 import UseAuth from "../../../hooks/UseAuth";
 
 const TrendingProducts = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = UseAuth();
-  const { handleUpvote, isLoading: isUpvoting } = useUpvote(); 
+  // const { user } = UseAuth();
+  // const { handleUpvote, isLoading: isUpvoting } = useUpvote(); 
 
 
   const { data: trendingProducts = [], isLoading } = useQuery({
@@ -60,6 +58,20 @@ const TrendingProducts = () => {
             </div>
               <div className="flex justify-between items-center mt-4">
                  <button
+              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition bg-gradient-to-l from-[#FF6B6B] to-[#FFE66D] text-white"
+            >
+              <FaArrowUp />
+             upvote {product.upvotes}
+            </button>
+                <Link
+                  to={`/singleproduct/${product._id}`}
+                  className="text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  View Details
+                </Link>
+              </div>
+              {/* <div className="flex justify-between items-center mt-4">
+                 <button
               onClick={() => handleUpvote(product)}
               disabled={
                 user?.email === product.owner_email ||
@@ -68,7 +80,7 @@ const TrendingProducts = () => {
               className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
                 user?.email === product.owner_email
                   ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-600 text-white"
+                  : "bg-gradient-to-l from-[#FF6B6B] to-[#FFE66D] text-white"
               }`}
             >
               <FaArrowUp />
@@ -80,14 +92,14 @@ const TrendingProducts = () => {
                 >
                   View Details
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
       </div>
       <div className="text-center mt-12">
         <Link to="/products">
-          <button className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg ">
+          <button className="bg-gradient-to-r from-[#FF6B6B] to-[#FFE66D] text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg ">
             Show All Products
           </button>
         </Link>

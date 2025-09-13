@@ -35,11 +35,11 @@ const SignIn = () => {
   return (
     <div className="flex justify-center items-center min-h-screen  px-4 my-10">
       <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-">Login Now!!</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-[#1A535C]">Login Now!!</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-        <label className="block text-neutral font-bold mb-2">Email</label>
+        <label className="block text-[#1A535C] font-bold mb-2">Email</label>
 
             <input
             {...register("email", { required: true })}
@@ -50,7 +50,7 @@ const SignIn = () => {
           </div>
 
           <div>
-     <label className="block text-neutral font-bold mb-2">Password</label>
+     <label className="block text-[#1A535C] font-bold mb-2">Password</label>
 
             <input
             {...register("password", { required: true })}
@@ -63,7 +63,7 @@ const SignIn = () => {
 
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-[#4ECDC4] text-white font-semibold hover:bg-[#1A535C] transition-all duration-300"
+            className="w-full py-2 rounded-lg bg-[#4ECDC4] text-white font-semibold  transition-all duration-300"
           >
             Login
           </button>
