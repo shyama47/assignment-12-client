@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import Loading from "../../shared/Loading/Loading";
 
 const Statistics = () => {
   const axiosSecure = useAxiosSecure();
@@ -39,7 +40,7 @@ const Statistics = () => {
   });
 
   if (isLoading) {
-    return <p className="text-center py-10">Loading statistics...</p>;
+    return <Loading/>
   }
 
   // Pie Chart Data

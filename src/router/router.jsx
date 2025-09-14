@@ -24,6 +24,7 @@ import ModeratorRoute from '../PrivateRoute/ModeratorRoute';
 import AdminRoute from '../PrivateRoute/AdminRoute';
 import Statistics from '../pages/Dashboard/Statistics/Statistics';
 import DashboardHome from '../pages/Dashboard/DashboardHome/DashboardHome';
+import ManageCoupons from '../pages/Dashboard/ManageCoupons/ManageCoupons';
 export const router=createBrowserRouter([
     {
         path:'/',
@@ -121,6 +122,12 @@ export const router=createBrowserRouter([
                 path:'statistics',
                 element:<AdminRoute>
                     <Statistics></Statistics>
+                </AdminRoute>
+            },
+            {
+                path:'manage-coupons',
+                element:<AdminRoute>
+                    <ManageCoupons></ManageCoupons>
                 </AdminRoute>
             }
         ]

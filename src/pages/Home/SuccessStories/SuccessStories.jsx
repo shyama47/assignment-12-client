@@ -48,7 +48,10 @@ const SuccessStories = () => {
                 <p className="px-2 py-1 bg-green-100 text-green-600 text-xs font-medium rounded-full ">Rating  {review.rating}</p>
               </div>
             </div>
-            <p className="text-gray-600">{review.description}</p>
+ <p className="text-gray-600 ">
+  {review.description}
+</p>
+
           </div>
         ))}
       </div>

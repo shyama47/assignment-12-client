@@ -30,7 +30,7 @@ const HowItWorks = () => {
       <h2 className="text-3xl font-bold text-center my-12 text-[#1A535C]">
         🚀 How It Works
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 max-w-6xl mx-auto">
         {steps.map((step, idx) => (
           <div
             key={idx}
@@ -40,7 +40,7 @@ const HowItWorks = () => {
             <h3 className="text-xl font-semibold text-center mb-2">
               {step.title}
             </h3>
-            <p className="text-gray-600 text-center">{step.desc}</p>
+            <p className="text-gray-600 text-center  max-w-[150px]  md:max-w-full  sm:max-w-full">{step.desc}</p>
           </div>
         ))}
       </div>

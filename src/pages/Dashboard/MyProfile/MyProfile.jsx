@@ -55,7 +55,7 @@ const MyProfile = () => {
               onClick={() => setShowModal(true)}
               className="px-6 py-3 text-lg font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl shadow-lg hover:scale-105 transition-all mb-4"
             >
-              Subscribe $20
+              Subscribe $500
             </button>
             <p>Status : Unsubscribe</p>
           </div>

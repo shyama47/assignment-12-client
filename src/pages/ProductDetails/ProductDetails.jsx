@@ -24,7 +24,7 @@ const ProductDetails = () => {
     },
   });
 
-  // ✅ fetch reviews
+  //  fetch reviews
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews", id],
     queryFn: async () => {
@@ -33,10 +33,10 @@ const ProductDetails = () => {
     },
   });
 
-  // ✅ custom hook for upvote (pass key + id)
+  //  custom hook for upvote (pass key + id)
   const { handleUpvote } = useUpvote("product", id);
 
-  // ✅ report mutation
+  //  report mutation
   const reportMutation = useMutation({
     mutationFn: async () => {
       return await axiosSecure.patch(`/products/report/${id}`, {
@@ -178,7 +178,7 @@ const ProductDetails = () => {
         </div>
 
         {/* Review Form */}
-        {user && !alreadyReported && (
+        {user && (
           <form onSubmit={handleSubmitReview} className="mt-6 space-y-3">
             <input
               type="text"
@@ -218,11 +218,11 @@ const ProductDetails = () => {
           </form>
         )}
 
-        {user && alreadyReported && (
+        {/* {user && alreadyReported && (
           <p className="mt-4 text-red-600 font-medium">
             You have reported this product. You cannot submit a review.
           </p>
-        )}
+        )} */}
       </div>
     </div>
   );

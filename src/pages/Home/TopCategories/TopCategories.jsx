@@ -13,7 +13,7 @@ const TopCategories = () => {
       <h2 className="text-3xl font-bold text-center my-12 text-[#1A535C]">
          Top Categories
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-6">
+      <div className="grid  grid-cols-2 md:grid-cols-4 gap-8 px-6">
         {categories.map((cat, idx) => (
           <div
             key={idx}

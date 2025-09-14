@@ -25,7 +25,7 @@ const JoinCommunity = () => {
       <h2 className="text-3xl font-bold text-center mb-5 text-[#1A535C]">
          Join Our Community
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 gap-8 px-6 max-w-5xl mx-auto">
         {benefits.map((item, idx) => (
           <div
             key={idx}

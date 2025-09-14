@@ -65,7 +65,7 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-2">
+        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-2 flex flex-col">
           {/* Common Links */}
           <h1 className="text-2xl font-bold ml-2">Dashboard</h1>
           <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
@@ -135,7 +135,8 @@ const DashboardLayout = () => {
           </li>
            </>
          }
-          <li className="mt-24">
+         <div className="flex-1"></div>
+          <li>
             <button
               onClick={logOut}
               className="w-full text-left px-4 py-2 bg-[#FF6B6B] text-white "
