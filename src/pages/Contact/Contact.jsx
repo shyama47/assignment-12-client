@@ -2,6 +2,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { Mail, User, MessageSquare, Phone, MapPin } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   const handleSubmit = (e) => {
@@ -14,7 +15,7 @@ const Contact = () => {
       message: form.message.value,
     };
 
-    console.log("Form Submitted:", formData);
+    // console.log("Form Submitted:", formData);
 
     toast.success("Message sent successfully!");
 
@@ -24,6 +25,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <div className="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-8 border border-[#FF6B6B]">
+        <Helmet>
+          <title>Contact || page</title>
+        </Helmet>
         {/* Title */}
         <h2 className="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-[#FF6B6B] to-[#FFE66D] text-transparent bg-clip-text">
           📩 Get in Touch

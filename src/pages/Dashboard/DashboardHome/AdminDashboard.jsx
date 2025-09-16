@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaUsers, FaBoxOpen, FaExclamationTriangle, FaStar } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
+
 const AdminDashboard = () => {
   const axiosSecure = useAxiosSecure();
 
@@ -44,6 +45,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="p-6 space-y-8">
+      
       <h1 className="text-2xl md:text-3xl font-bold text-[#1A535C]">⚙️ Admin Dashboard</h1>
 
       {/* Stats Cards */}

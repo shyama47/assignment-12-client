@@ -7,10 +7,14 @@ import TopCategories from './TopCategories/TopCategories';
 import JoinCommunity from './JoinCommunity/JoinCommunity';
 import HowItWorks from './HowItWorks/HowItWorks ';
 import CouponCarousel from './CouponCarousel/CouponCarousel';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+            <title>Home || Page</title>
+            </Helmet>
        <BannerSlider />
        <FeaturedProducts />
        <TrendingProducts />

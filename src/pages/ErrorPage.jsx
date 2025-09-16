@@ -7,7 +7,7 @@ const ErrorPage = () => {
       <img
         src={ErrorImage}
         alt="Error Illustration"
-        className="w-100 max-w-md my-6 rounded-2xl"
+        className="w-full max-w-md my-6 rounded-2xl"
       />
 
       {/* Error Message */}
@@ -19,7 +19,7 @@ const ErrorPage = () => {
       {/* Back to Home */}
       <Link
         to="/"
-        className="bg-[#FFE66D] text-black px-6 py-3 rounded-lg hover:bg-[#FF6B6B] transition"
+        className="bg-[#FFE66D] text-black px-6 py-3 rounded-lg hover:bg-[#FF6B6B] transition mb-4"
       >
         Go Back Home
       </Link>

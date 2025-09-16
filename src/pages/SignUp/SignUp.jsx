@@ -6,6 +6,7 @@ import UseAuth from "../../hooks/UseAuth";
 import axios from "axios";
 import { useState } from "react";
 import useAxiosInstance from "../../hooks/useAxiosInstance";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
     const { createUser,updateUserProfile } = UseAuth();
@@ -30,7 +31,7 @@ const SignUp = () => {
                     last_log_in:new Date().toISOString()
                 }
                 const userRes =await axiosInstance.post('/users',userInfo)
-                console.log(userRes.data);
+                // console.log(userRes.data);
                 //  update user profile in firebase
                 const userProfile ={
                     displayName:name,
@@ -59,7 +60,7 @@ const SignUp = () => {
 
     const handleImageUpload =async(e) =>{
         const image =e.target.files[0];
-        console.log(image);
+        // console.log(image);
         const fromData =new FormData();
         fromData.append('image',image)
         const imageUploadUrl =`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_upload_key}`
@@ -69,6 +70,9 @@ const SignUp = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen px-4 my-16" >
+            <Helmet>
+                <title>SignUp || page</title>
+            </Helmet>
             <div className="w-full max-w-sm  mx-auto bg-white shadow-lg rounded-xl p-6">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-[#1A535C]">Create Account Now</h2>
 

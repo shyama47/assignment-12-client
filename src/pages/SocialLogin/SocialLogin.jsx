@@ -16,7 +16,7 @@ const axiosInstance =useAxiosInstance();
     googleLogin()
       .then(async(result) => {
         const user =result.user;
-        console.log(user);
+        // console.log(user);
         toast.success("Google Login successful!");
         const userInfo ={
           email:user.email,
@@ -25,7 +25,7 @@ const axiosInstance =useAxiosInstance();
           last_log_in:new Date().toISOString()
         }
         const res =await axiosInstance.post('/users',userInfo)
-        console.log('user update info',res.data);
+        // console.log('user update info',res.data);
         navigate(from, { replace: true });
       })
       .catch((error) => {

@@ -1,19 +1,19 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
 import Slider from "react-slick"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import useAxiosInstance from "../../../hooks/useAxiosInstance";
 
 const CouponCarousel = () => {
-  const axiosSecure = useAxiosSecure();
+  const  axiosInstance =useAxiosInstance();
 
   // Fetch only valid coupons
   const { data: coupons = [], isLoading } = useQuery({
     queryKey: ["validCoupons"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/coupons");
+      const res = await axiosInstance.get("/coupons");
       // filter out expired coupons
       return res.data.filter(
         (c) => new Date(c.expiryDate) >= new Date()

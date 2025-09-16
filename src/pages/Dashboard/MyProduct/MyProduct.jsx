@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UseAuth from "../../../hooks/UseAuth";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 
 const MyProducts = () => {
@@ -54,6 +55,9 @@ const MyProducts = () => {
 
   return (
     <div className="w-full max-w-3xl mx-auto  p-6  my-16">
+      <Helmet>
+        <title>MyProduct || page</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center ">📦 My Products</h2>
 
       {products.length === 0 ? (

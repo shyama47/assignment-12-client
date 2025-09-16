@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import { FaArrowUp } from "react-icons/fa";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useUpvote from "../../hooks/useUpvote";
 import UseAuth from "../../hooks/UseAuth";
 import Loading from "../shared/Loading/Loading";
+import useAxiosInstance from "../../hooks/useAxiosInstance";
+import { Helmet } from "react-helmet-async";
 
 const ProductsPage = () => {
-  const axiosSecure = useAxiosSecure();
+const axiosInstance = useAxiosInstance();
   const { user } = UseAuth();
     const { handleUpvote, isLoading: isUpvoting } = useUpvote(); 
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,7 +18,7 @@ const ProductsPage = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["acceptedProducts"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/products/status/Accepted");
+      const res = await axiosInstance.get("/products/status/Accepted");
       return res.data;
     },
   });
@@ -31,6 +32,9 @@ const ProductsPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 my-10">
+      <Helmet>
+        <title>Product || page</title>
+      </Helmet>
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
         🛍️ All Products
       </h2>
@@ -105,6 +109,7 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
+
 
 
 

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
 
+
 const ManageCoupons = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
@@ -58,6 +59,7 @@ const ManageCoupons = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 my-10">
+     
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
         🎟️ Manage Coupons
       </h2>

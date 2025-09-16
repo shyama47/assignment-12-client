@@ -3,13 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import { FaArrowUp } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 import UseAuth from "../../../hooks/UseAuth";
 import Loading from "../../shared/Loading/Loading";
 import useUpvote from "../../../hooks/useUpvote"; 
+import useAxiosInstance from "../../../hooks/useAxiosInstance";
 
 const FeaturedProducts = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxiosInstance();
   const { user } = UseAuth();
   const { handleUpvote, isLoading: isUpvoting } = useUpvote(); 
 
@@ -17,7 +18,8 @@ const FeaturedProducts = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["featuredProducts"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/products/featured");
+      const res = await axiosInstance.get("/products/featured");
+      // console.log(res);
       return res.data;
     },
   });
@@ -28,8 +30,8 @@ const FeaturedProducts = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 my-10">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
-        🌟 Featured Products
+      <h2 className="text-2xl md:text-4xl font-bold text-center mb-6 text-[#1A535C]">
+         Featured Products
       </h2>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (

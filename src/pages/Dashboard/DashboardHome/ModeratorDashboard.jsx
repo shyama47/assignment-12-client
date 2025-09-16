@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaBoxOpen, FaExclamationTriangle } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
+
 const ModeratorDashboard = () => {
   const axiosSecure = useAxiosSecure();
 
@@ -27,7 +28,7 @@ const ModeratorDashboard = () => {
   return (
     <div className="p-6 space-y-8">
       <h1 className="text-2xl  md:text-3xl font-bold text-[#1A535C]">🛡️ Moderator Dashboard</h1>
-
+    
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-yellow-500 text-white p-6 rounded-2xl flex flex-col items-center shadow-lg">
           <FaBoxOpen className="text-3xl mb-2" />

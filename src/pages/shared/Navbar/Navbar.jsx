@@ -155,7 +155,7 @@ import UseAuth from "../../../hooks/UseAuth";
 
 const Navbar = () => {
   const { user, logOut } = UseAuth();
-  console.log(user);
+  // console.log(user);
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 

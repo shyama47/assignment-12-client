@@ -2,19 +2,19 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
+import useAxiosInstance from "../../../hooks/useAxiosInstance";
 
 
 const TrendingProducts = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxiosInstance();
   
 
 
   const { data: trendingProducts = [], isLoading } = useQuery({
     queryKey: ["trendingProducts"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/products/trending");
+      const res = await axiosInstance.get("/products/trending");
       return res.data;
     },
   });
@@ -23,7 +23,7 @@ const TrendingProducts = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-4 my-10">
-      <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">Trending Products</h2>
+      <h2 className="text-4xl font-bold text-center mb-10 text-[#1A535C]">Trending Products</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {trendingProducts.map((product) => (
           <div

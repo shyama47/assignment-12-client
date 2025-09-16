@@ -1,7 +1,7 @@
 import React from 'react';
 import UseAuth from '../hooks/UseAuth';
 import Loading from '../pages/shared/Loading/Loading';
-import UseUserRole from '../hooks/UseUserRole';
+import UseUserRole from '../hooks/useUserRole';
 import { Navigate } from 'react-router';
 
 

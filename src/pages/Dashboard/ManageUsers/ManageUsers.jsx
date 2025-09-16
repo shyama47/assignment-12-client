@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -78,6 +79,9 @@ const ManageUsers = () => {
   return (
     <div className="p-5">
       <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
+      <Helmet>
+        <title>ManageUsers || page</title>
+      </Helmet>
       <div className="overflow-x-auto bg-white shadow-md rounded-lg">
         <table className="table w-full">
           <thead className="bg-gray-300">

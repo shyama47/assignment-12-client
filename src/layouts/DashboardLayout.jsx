@@ -17,11 +17,11 @@ import {
 } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import UseAuth from "../hooks/UseAuth";
-import UseUserRole from "../hooks/UseUserRole";
+import useUserRole from "../hooks/useUserRole";
 
 const DashboardLayout = () => {
   const { logOut } = UseAuth();
-  const { role, roleLoading } = UseUserRole();
+  const { role, roleLoading } = useUserRole();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -74,10 +74,9 @@ const DashboardLayout = () => {
             </NavLink>
           </li>
 
-          {
-            !roleLoading && role === 'user' &&
+           {
+            !roleLoading && role === 'user' && 
             <>
-
             {/* User Routes */}
           <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/my-profile" className="flex items-center gap-2">
@@ -95,7 +94,7 @@ const DashboardLayout = () => {
             </NavLink>
           </li>
             </>
-          }
+           }
 
           {/* Moderator Routes */}
           {

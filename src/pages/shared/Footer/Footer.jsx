@@ -1,59 +1,127 @@
+// import { NavLink } from "react-router";
+// import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
+// const Footer = () => {
+//   return (
+//     <footer className="bg-[#FFE66D] text-[#1A535C] pb-5 pt-10 px-6">
+//       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+
+//         {/* Logo & Description */}
+//         <div>
+//           <h2 className="text-2xl font-bold mb-3">AppOrbit</h2>
+//           <p className="text-sm max-w-md mx-auto md:-mr-16 ">
+//            AppOrbit is a community-driven platform to discover, share, and review the latest tech products — including Web Apps, AI Tools, Software, Games, and Mobile Apps. Join our community to explore innovations, upvote your favorites, and showcase your own creations.
+
+//           </p>
+//         </div>
+
+//         {/* Menu Links */}
+//         <div className="ml-20">
+//           <h3 className="text-lg font-semibold mb-3 ">Menu</h3>
+//           <ul className="space-y-2">
+//             <li><NavLink to="/" className="hover:text-[#FF6B6B]">Home</NavLink></li>
+//             <li><NavLink to="/products" className="hover:text-[#FF6B6B]">Products</NavLink></li>
+//             <li><NavLink to="/login" className="hover:text-[#FF6B6B]">Login</NavLink></li>
+//           </ul>
+//         </div>
+
+//         {/* Quick Links */}
+//         <div>
+//           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+//           <ul className="space-y-2">
+//             <li><NavLink to="/contact" className="hover:text-[#FF6B6B]">Contact</NavLink></li>
+//             <li><NavLink to="/terms" className="hover:text-[#FF6B6B]">Terms & Conditions</NavLink></li>
+//             <li><NavLink to="/privacy" className="hover:text-[#FF6B6B]">Privacy Policy</NavLink></li>
+//           </ul>
+//         </div>
+
+//         {/* Social Media */}
+//         <div>
+//           <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
+//           <div className="flex space-x-4">
+//             <NavLink to="/facebook" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
+//               <FaFacebookF />
+//             </NavLink>
+//             <NavLink to="/twitter" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
+//               <FaTwitter />
+//             </NavLink>
+//             <NavLink to="/linkedin" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
+//               <FaLinkedinIn />
+//             </NavLink>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Bottom Copyright */}
+//       <div className="mt-4 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-7">
+//         © {new Date().getFullYear()} MyShop. All Rights Reserved.
+//       </div>
+//     </footer>
+//   );
+// };
+
+// export default Footer;
+
 import { NavLink } from "react-router";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="bg-[#FFE66D] text-[#1A535C] pb-5 pt-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
 
         {/* Logo & Description */}
-        <div>
+        <div className="flex flex-col md:col-span-1 mb-6 md:mb-0">
           <h2 className="text-2xl font-bold mb-3">AppOrbit</h2>
-          <p className="text-sm max-w-md mx-auto -mr-16 ">
-           AppOrbit is a community-driven platform to discover, share, and review the latest tech products — including Web Apps, AI Tools, Software, Games, and Mobile Apps. Join our community to explore innovations, upvote your favorites, and showcase your own creations.
-
+          <p className="text-sm leading-relaxed md:max-w-[300px] ">
+            AppOrbit is a community-driven platform to discover, share, and review the latest tech products — including Web Apps, AI Tools, Software, Games, and Mobile Apps. Join our community to explore innovations, upvote your favorites, and showcase your own creations.
           </p>
         </div>
 
-        {/* Menu Links */}
-        <div className="ml-20">
-          <h3 className="text-lg font-semibold mb-3 ">Menu</h3>
-          <ul className="space-y-2">
-            <li><NavLink to="/" className="hover:text-[#FF6B6B]">Home</NavLink></li>
-            <li><NavLink to="/products" className="hover:text-[#FF6B6B]">Products</NavLink></li>
-            <li><NavLink to="/login" className="hover:text-[#FF6B6B]">Login</NavLink></li>
-          </ul>
-        </div>
+        {/* Other Sections (Menu, Quick Links, Social Media) */}
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:col-span-3">
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><NavLink to="/contact" className="hover:text-[#FF6B6B]">Contact</NavLink></li>
-            <li><NavLink to="/terms" className="hover:text-[#FF6B6B]">Terms & Conditions</NavLink></li>
-            <li><NavLink to="/privacy" className="hover:text-[#FF6B6B]">Privacy Policy</NavLink></li>
-          </ul>
-        </div>
-
-        {/* Social Media */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
-          <div className="flex space-x-4">
-            <NavLink to="/facebook" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
-              <FaFacebookF />
-            </NavLink>
-            <NavLink to="/twitter" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
-              <FaTwitter />
-            </NavLink>
-            <NavLink to="/linkedin" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
-              <FaLinkedinIn />
-            </NavLink>
+          {/* Menu Links */}
+          <div className="flex flex-col md:ml-20">
+            <h3 className="text-lg font-semibold mb-3">Menu</h3>
+            <ul className="space-y-2">
+              <li><NavLink to="/" className="hover:text-[#FF6B6B]">Home</NavLink></li>
+              <li><NavLink to="/products" className="hover:text-[#FF6B6B]">Products</NavLink></li>
+              <li><NavLink to="/login" className="hover:text-[#FF6B6B]">Login</NavLink></li>
+            </ul>
           </div>
+
+          {/* Quick Links */}
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><NavLink to="/contact" className="hover:text-[#FF6B6B]">Contact</NavLink></li>
+              <li><NavLink to="/terms" className="hover:text-[#FF6B6B]">Terms & Conditions</NavLink></li>
+              <li><NavLink to="/privacy" className="hover:text-[#FF6B6B]">Privacy Policy</NavLink></li>
+            </ul>
+          </div>
+
+          {/* Social Media */}
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
+            <div className="flex space-x-4">
+              <NavLink to="/facebook" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
+                <FaFacebookF />
+              </NavLink>
+              <NavLink to="/twitter" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
+                <FaTwitter />
+              </NavLink>
+              <NavLink to="/linkedin" className="p-2 bg-[#1A535C] text-white rounded-full hover:bg-[#FF6B6B] transition">
+                <FaLinkedinIn />
+              </NavLink>
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* Bottom Copyright */}
-      <div className="mt-4 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-7">
+      <div className="mt-6 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-7">
         © {new Date().getFullYear()} MyShop. All Rights Reserved.
       </div>
     </footer>

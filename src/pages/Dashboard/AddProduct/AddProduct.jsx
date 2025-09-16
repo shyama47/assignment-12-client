@@ -1,12 +1,13 @@
 
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { WithContext as ReactTags } from "react-tag-input";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UseAuth from "../../../hooks/UseAuth";
 import React from "react";
+import Loading from "../../shared/Loading/Loading";
 
 
 const AddProduct = () => {
@@ -18,37 +19,59 @@ const AddProduct = () => {
 
   // 🔹 tags state
   const [tags, setTags] = React.useState([]);
+  const handleDelete = (i) => setTags(tags.filter((_, index) => index !== i));
+  const handleAddition = (tag) => setTags([...tags, tag]);
 
-  const handleDelete = (i) => {
-    setTags(tags.filter((tag, index) => index !== i));
-  };
+  // ✅ Get logged-in user info (subscription status)
+  const { data: userInfo, isLoading: userLoading } = useQuery({
+    queryKey: ["userInfo", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/${user?.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
 
-  const handleAddition = (tag) => {
-    setTags([...tags, tag]);
-  };
+  // ✅ Get my products (to check restriction)
+  const { data: myProducts = [], isLoading: productsLoading } = useQuery({
+    queryKey: ["myProducts", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/products/user?email=${user?.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
 
-  // update
+  // 🚀 Submit Handler
   const onSubmit = (data) => {
-  // Map to plain strings
-  const formattedTags = tags.map(t => t.text ? t.text : t).filter(Boolean);
+    // Restriction check before adding product
+    if (!userInfo?.isSubscribed && myProducts.length >= 1) {
+      Swal.fire({
+        icon: "warning",
+        title: "Limit Reached 🚫",
+        text: "Normal users can add only 1 product. Subscribe to add more!",
+        confirmButtonColor: "#ef4444",
+      });
+      return;
+    }
 
-  console.log("Tags before submit:", formattedTags); // Debug
+    const formattedTags = tags.map((t) => (t.text ? t.text : t)).filter(Boolean);
 
-  const newProduct = {
-    name: data.name,
-    description: data.description,
-    image: data.image,
-    externalLink: data.externalLink,
-    tags: formattedTags, // array of strings
-    owner_name: user?.displayName,
-    owner_email: user?.email,
-    owner_image: user?.photoURL,
-    upvotes: 0,
-    timestamp: new Date(),
+    const newProduct = {
+      name: data.name,
+      description: data.description,
+      image: data.image,
+      externalLink: data.externalLink,
+      tags: formattedTags,
+      owner_name: user?.displayName,
+      owner_email: user?.email,
+      owner_image: user?.photoURL,
+      upvotes: 0,
+      timestamp: new Date(),
+    };
+
+    mutation.mutate(newProduct);
   };
-
-  mutation.mutate(newProduct);
-};
 
   const mutation = useMutation({
     mutationFn: async (newProduct) => {
@@ -57,10 +80,10 @@ const AddProduct = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["products"]);
+      queryClient.invalidateQueries(["myProducts"]);
       reset();
       setTags([]);
 
-      // 🎉 SweetAlert2 Success Message
       Swal.fire({
         icon: "success",
         title: "Product Added!",
@@ -68,7 +91,6 @@ const AddProduct = () => {
         confirmButtonColor: "#6366f1",
       });
 
-      // 🔹 Redirect user to My Products page
       navigate("/dashboard/my-products");
     },
     onError: () => {
@@ -81,11 +103,15 @@ const AddProduct = () => {
     },
   });
 
+  if (userLoading || productsLoading) {
+    return <Loading/>
+  }
 
   return (
     <div className="flex justify-center items-center my-10 px-4 ">
-      <div className="w-full max-w-2xl mx-auto  bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-pink-400">
-        <h2 className="text-3xl font-extrabold text-center  mb-6">
+      <div className="w-full max-w-2xl mx-auto bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-pink-400">
+      
+        <h2 className="text-3xl font-extrabold text-center mb-6">
           🚀 Add New Product
         </h2>
 
@@ -163,9 +189,7 @@ const AddProduct = () => {
 
           {/* Tags */}
           <div>
-            <label className="block font-semibold text-gray-700 mb-2">
-              Tags
-            </label>
+            <label className="block font-semibold text-gray-700 mb-2">Tags</label>
             <div className="border-2 border-pink-300 rounded-xl p-2">
               <ReactTags
                 tags={tags}
@@ -209,5 +233,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
-
-

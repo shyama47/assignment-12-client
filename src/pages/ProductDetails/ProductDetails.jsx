@@ -8,6 +8,7 @@ import useUpvote from "../../hooks/useUpvote";
 import { FaThumbsUp, FaFlag } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Loading from "../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -87,6 +88,9 @@ const ProductDetails = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow rounded-2xl my-8">
       {/* Product Info */}
+      <Helmet>
+        <title>ProductDetails || page</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row gap-6">
         <img
           src={product?.image}
