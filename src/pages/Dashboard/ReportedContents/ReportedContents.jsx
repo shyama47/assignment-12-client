@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ReportedContents = () => {
   const axiosSecure = useAxiosSecure();
@@ -39,7 +40,9 @@ const ReportedContents = () => {
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
         🚨 Reported Products
       </h2>
-
+        <Helmet>
+          <title>ReportedProduct || page</title>
+        </Helmet>
       {reportedProducts.length === 0 ? (
         <p className="text-center text-gray-500">No reported products found.</p>
       ) : (

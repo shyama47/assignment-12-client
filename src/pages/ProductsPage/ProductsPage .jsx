@@ -14,7 +14,7 @@ const axiosInstance = useAxiosInstance();
     const { handleUpvote, isLoading: isUpvoting } = useUpvote(); 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // ✅ Fetch all accepted products
+  //  Fetch all accepted products
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["acceptedProducts"],
     queryFn: async () => {
@@ -23,7 +23,7 @@ const axiosInstance = useAxiosInstance();
     },
   });
 
-  // ✅ Filter products by search term
+  //  Filter products by search term
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

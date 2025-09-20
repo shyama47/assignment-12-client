@@ -1,13 +1,13 @@
 import React from 'react';
 import UseAuth from '../hooks/UseAuth';
 import Loading from '../pages/shared/Loading/Loading';
-import UseUserRole from '../hooks/useUserRole';
+import useUserRole from '../hooks/useUserRole';
 import { Navigate } from 'react-router';
 
 
 const ModeratorRoute = ({children}) => {
     const {user ,loading} =UseAuth();
-    const {role,roleLoading} =UseUserRole();
+    const {role,roleLoading} =useUserRole();
      
     if(loading || roleLoading){
         return <Loading/>

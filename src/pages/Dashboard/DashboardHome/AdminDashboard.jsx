@@ -1,17 +1,25 @@
 
-
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaUsers, FaBoxOpen, FaExclamationTriangle, FaStar } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useUserRole from "../../../hooks/useUserRole";
+import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
+
+
 
 
 const AdminDashboard = () => {
+  const {roleLoading } = useUserRole();
   const axiosSecure = useAxiosSecure();
+ 
+
 
   // Fetch data
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
+    // enabled:!roleLoading && !! user?.email && !!user?.accessToken,
     queryFn: async () => {
       const res = await axiosSecure.get("/users")
       return res.data;
@@ -42,10 +50,14 @@ const AdminDashboard = () => {
     }
   });
 
-
+  if (roleLoading ) {
+    return <Loading />;
+  }
   return (
     <div className="p-6 space-y-8">
-      
+          <Helmet>
+            <title>Admin || Dashboard</title>
+          </Helmet>
       <h1 className="text-2xl md:text-3xl font-bold text-[#1A535C]">⚙️ Admin Dashboard</h1>
 
       {/* Stats Cards */}
@@ -74,8 +86,8 @@ const AdminDashboard = () => {
           <p>Reviews</p>
         </div>
       </div>
-      </div>
-   
+    </div>
+
   );
 };
 

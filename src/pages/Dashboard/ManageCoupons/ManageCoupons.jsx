@@ -4,13 +4,14 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageCoupons = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
-  
+
   const {
     register,
     handleSubmit,
@@ -59,11 +60,13 @@ const ManageCoupons = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 my-10">
-     
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
+
+      <h2 className="text-2xl md:text-3xl text-[#1A535C] font-bold text-center mb-6">
         🎟️ Manage Coupons
       </h2>
-
+      <Helmet>
+        <title>ManageCoupons || page</title>
+      </Helmet>
       {/* Add Coupon Form */}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -138,7 +141,7 @@ const ManageCoupons = () => {
               {coupons.map((coupon) => (
                 <tr key={coupon._id} className="hover:bg-gray-50">
                   <td className=" font-bold">{coupon.code}</td>
-                  <td className="">
+                  <td className="mb-4 md:mb-0">
                     {new Date(coupon.expiryDate).toLocaleDateString()}
                   </td>
                   <td className="">{coupon.discount}%</td>
@@ -148,7 +151,7 @@ const ManageCoupons = () => {
                       onClick={() => deleteCoupon.mutate(coupon._id)}
                       className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
                     >
-                       Delete
+                      Delete
                     </button>
                     {/* Future: Edit feature modal */}
                   </td>

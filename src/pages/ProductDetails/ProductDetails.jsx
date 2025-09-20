@@ -13,16 +13,20 @@ import { Helmet } from "react-helmet-async";
 const ProductDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  const { user } = UseAuth();
+  const { user,loading } = UseAuth();
   const queryClient = useQueryClient();
 
-  // ✅ fetch product details
+    if(loading){
+      return<Loading/>
+    }
+  //  fetch product details
   const { data: product, isLoading } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/singleproduct/${id}`);
-      return data;
+      const res = await axiosSecure.get(`/singleproduct/${id}`);
+      return res.data;
     },
+    enabled:!!id && !!user.email,
   });
 
   //  fetch reviews
@@ -32,9 +36,10 @@ const ProductDetails = () => {
       const { data } = await axiosSecure.get(`/reviews/${id}`);
       return data;
     },
+    enabled:!!id && !!user.email,
   });
 
-  //  custom hook for upvote (pass key + id)
+ 
   const { handleUpvote } = useUpvote("product", id);
 
   //  report mutation
@@ -86,7 +91,8 @@ const ProductDetails = () => {
   const alreadyReported = product?.reportedUsers?.includes(user?.email);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow rounded-2xl my-8">
+    <div className="w-full max-w-4xl mx-auto px-6">
+    <div className=" p-6 bg-white shadow rounded-2xl my-8 border border-amber-200">
       {/* Product Info */}
       <Helmet>
         <title>ProductDetails || page</title>
@@ -221,16 +227,13 @@ const ProductDetails = () => {
             </div>
           </form>
         )}
-
-        {/* {user && alreadyReported && (
-          <p className="mt-4 text-red-600 font-medium">
-            You have reported this product. You cannot submit a review.
-          </p>
-        )} */}
       </div>
+    </div>
     </div>
   );
 };
 
 export default ProductDetails;
+
+
 

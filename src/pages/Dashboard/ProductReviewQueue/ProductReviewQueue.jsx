@@ -4,17 +4,19 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
+import useUserRole from "../../../hooks/useUserRole";
+import { Helmet } from "react-helmet-async";
 
 
 const ProductReviewQueue = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
-
+  const {roleLoading} = useUserRole();
   // ✅ Fetch pending products
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["products", "pending"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/products/status/pending");
+      const res = await axiosSecure.get("/products/pending");
       return res.data;
     },
   });
@@ -87,10 +89,13 @@ const ProductReviewQueue = () => {
     });
   };
 
-  if (isLoading) return <Loading />;
+  if (isLoading || roleLoading) return <Loading />;
 
   return (
     <div className="p-6 bg-white rounded-2xl shadow-lg w-[95%] sm:w-[90%] md:w-[80%] lg:max-w-3xl mx-auto my-10 border border-green-200">
+      <Helmet>
+        <title>PendingProduct || page</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4">📌 Product Review Queue</h2>
       {products.length === 0 ? (
         <p className="text-gray-500">No pending products found.</p>

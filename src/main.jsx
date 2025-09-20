@@ -11,14 +11,14 @@ import { HelmetProvider } from 'react-helmet-async'
 const queryClient =new QueryClient();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
- <div className='font-roboto'>
+ <div className='font-roboto'> 
   <HelmetProvider>
+     <AuthProvider>
      <QueryClientProvider client={queryClient}>
-  <AuthProvider>
     <RouterProvider router={router}></RouterProvider>
       <Toaster position="top-right" reverseOrder={false} />
-  </AuthProvider>
   </QueryClientProvider>
+  </AuthProvider>
   </HelmetProvider>
  </div>
   </StrictMode>,

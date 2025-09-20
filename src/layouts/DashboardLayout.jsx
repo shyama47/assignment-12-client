@@ -29,7 +29,7 @@ const DashboardLayout = () => {
       {/* Page Content */}
       <div className="drawer-content flex flex-col">
         {/* Navbar for small device */}
-        <div className="navbar bg-base-300 w-full lg:hidden">
+        <div className="navbar bg-[#FFE66D] w-full lg:hidden sticky top-0 min-h-fit z-50">
           <div className="flex-none">
             <label
               htmlFor="my-drawer-2"
@@ -98,7 +98,7 @@ const DashboardLayout = () => {
 
           {/* Moderator Routes */}
           {
-             !roleLoading && role === 'moderator' &&
+             !roleLoading  && role === 'moderator' &&
              <>
              <li className="hover:bg-[#FF6B6B] hover:text-white rounded">
             <NavLink to="/dashboard/review-queue" className="flex items-center gap-2">

@@ -6,21 +6,24 @@ import AdminDashboard from './AdminDashboard';
 import ModeratorDashboard from './ModeratorDashboard';
 import ForbiddenPage from '../../Forbidden/Forbidden';
 
+import UseAuth from '../../../hooks/UseAuth';
+
 
 const DashboardHome = () => {
-  const { role, roleLoading } = useUserRole();
-
-  if (roleLoading) {
+  const { loading } = UseAuth();
+  const { role, roleLoading, } = useUserRole();
+  // console.log({ role, roleLoading });
+  if (roleLoading || loading) {
     return <Loading />;
   }
 
-  if (role === 'admin' ) {
+  if (role === 'admin') {
     return <AdminDashboard />;
   } else if (role === 'moderator') {
     return <ModeratorDashboard />;
   } else if (role === 'user') {
     return <UserDashboard />;
-    
+
   } else {
     return <ForbiddenPage />;
   }

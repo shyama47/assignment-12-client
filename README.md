@@ -3,9 +3,7 @@
 A modern **MERN stack platform** for discovering, sharing, and reviewing tech products such as Web Apps, AI Tools, Games, Mobile Apps, and more.  
 
 ## 🌍 Live URL  
-🔗 [Live Demo](https://your-live-link.com)  
-🔗 [Server API](https://your-server-link.com)  
-
+🔗 [Live Demo](https://apporbit-fullstack-project.web.app)  
 ---
 
 ## 🎯 Purpose  

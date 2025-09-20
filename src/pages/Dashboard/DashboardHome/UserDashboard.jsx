@@ -1,33 +1,37 @@
 
-
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaBoxOpen, FaThumbsUp } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UseAuth from "../../../hooks/UseAuth";
 import { Helmet } from "react-helmet-async";
+import useUserRole from "../../../hooks/useUserRole";
+import Loading from "../../shared/Loading/Loading";
 
 const UserDashboard = () => {
   const { user } = UseAuth();
   const axiosSecure = useAxiosSecure();
+  const { roleLoading } = useUserRole();
 
-  const { data: myProducts = [] } = useQuery({
+  const { data: myProducts = [] ,isLoading } = useQuery({
     queryKey: ["myProducts", user?.email],
-    queryFn: async () =>{
+    queryFn: async () => {
       const res = await axiosSecure.get(`/products/user?email=${user?.email}`)
       return res.data;
-    },
-    enabled: !!user?.email,
+    }
   });
 
   const totalUpvotes = myProducts.reduce((acc, p) => acc + (p.upvotes || 0), 0);
 
+  if (roleLoading || isLoading) {
+    return <Loading />
+  }
   return (
     <div className="p-6 space-y-8">
       <h1 className="text-2xl md:text-3xl font-bold text-[#1A535C]">👤 User Dashboard</h1>
-     <Helmet>
-      <title>User || dashboard</title>
-     </Helmet>
+      <Helmet>
+        <title>User || dashboard</title>
+      </Helmet>
       <div className="grid sm:grid-cols-2 md:grid-cols-2 gap-6">
         <div className="bg-blue-500 text-white p-6 rounded-2xl flex flex-col items-center shadow-lg">
           <FaBoxOpen className="text-3xl mb-2" />

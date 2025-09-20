@@ -8,6 +8,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UseAuth from "../../../hooks/UseAuth";
 import React from "react";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 
 const AddProduct = () => {
@@ -110,7 +111,9 @@ const AddProduct = () => {
   return (
     <div className="flex justify-center items-center my-10 px-4 ">
       <div className="w-full max-w-2xl mx-auto bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-pink-400">
-      
+      <Helmet>
+        <title>AddProduct || page</title>
+      </Helmet>
         <h2 className="text-3xl font-extrabold text-center mb-6">
           🚀 Add New Product
         </h2>

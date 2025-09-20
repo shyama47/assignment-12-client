@@ -6,7 +6,7 @@ const ForbiddenPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800 p-16">
+    <div className="flex flex-col items-center justify-center min-h-screen  text-gray-800 p-16">
       
       {/* Icon */}
       <div className="text-red-500 text-9xl mb-6 animate-pulse">

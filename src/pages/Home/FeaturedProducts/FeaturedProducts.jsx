@@ -1,43 +1,63 @@
+
+
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import { FaArrowUp } from "react-icons/fa";
-import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 import UseAuth from "../../../hooks/UseAuth";
 import Loading from "../../shared/Loading/Loading";
-import useUpvote from "../../../hooks/useUpvote"; 
+import useUpvote from "../../../hooks/useUpvote";
 import useAxiosInstance from "../../../hooks/useAxiosInstance";
 
 const FeaturedProducts = () => {
   const axiosInstance = useAxiosInstance();
   const { user } = UseAuth();
-  const { handleUpvote, isLoading: isUpvoting } = useUpvote(); 
+  const { handleUpvote, isLoading: isUpvoting } = useUpvote();
 
-  // ✅ Fetch Featured Products
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["featuredProducts"],
     queryFn: async () => {
       const res = await axiosInstance.get("/products/featured");
-      // console.log(res);
       return res.data;
     },
   });
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  if (isLoading) return <Loading />;
 
   return (
     <div className="max-w-6xl mx-auto px-4 my-10">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-6 text-[#1A535C]">
-         Featured Products
-      </h2>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
-          <div
+      {/* Section Title */}
+      <motion.h2
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-2xl md:text-4xl font-bold text-center mb-6 text-[#1A535C]"
+      >
+        Featured Products
+      </motion.h2>
+
+      {/* Products Grid */}
+      <motion.div
+        className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        initial="hidden"
+        whileInView="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.2 } },
+        }}
+      >
+        {products.map((product, idx) => (
+          <motion.div
             key={product._id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-5 border border-gray-100 flex flex-col"
+            variants={{
+              hidden: { opacity: 0, y: 40 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.03, boxShadow: "0px 10px 20px rgba(0,0,0,0.12)" }}
+            className="bg-white rounded-2xl shadow-md hover:shadow-lg  p-5 border border-gray-100 flex flex-col"
           >
             <img
               src={product.image}
@@ -51,7 +71,7 @@ const FeaturedProducts = () => {
               {product.name}
             </Link>
 
-            <div className="flex gap-2 mb-3">
+            <div className="flex gap-2 mb-3 flex-wrap">
               {product.tags?.map((tag, idx) => (
                 <span
                   key={idx}
@@ -62,12 +82,10 @@ const FeaturedProducts = () => {
               ))}
             </div>
 
-            {/* ✅ Upvote Button (Reusable via custom hook) */}
             <button
               onClick={() => handleUpvote(product)}
               disabled={
-                user?.email === product.owner_email ||
-                isUpvoting // disable during mutation
+                user?.email === product.owner_email || isUpvoting
               }
               className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
                 user?.email === product.owner_email
@@ -78,9 +96,9 @@ const FeaturedProducts = () => {
               <FaArrowUp />
               {isUpvoting ? "Upvoting..." : `Upvote ${product.upvotes || 0}`}
             </button>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

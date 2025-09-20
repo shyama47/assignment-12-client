@@ -1,15 +1,17 @@
 import React from 'react';
-
-
 import { Navigate } from 'react-router';
 import UseAuth from '../hooks/UseAuth';
 import Loading from '../pages/shared/Loading/Loading';
-import UseUserRole from '../hooks/useUserRole';
+import useUserRole from '../hooks/useUserRole';
+
+
+
+
 
 const AdminRoute = ({ children }) => {
     const { user, loading } = UseAuth();
-    const { role, roleLoading } = UseUserRole();
-
+    const { role, roleLoading } = useUserRole();
+    // console.log({role,roleLoading});
     if (loading || roleLoading) {
         return <Loading/>
     }

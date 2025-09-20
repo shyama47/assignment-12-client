@@ -1,5 +1,3 @@
-
-
 import { toast } from "react-hot-toast";
 import { useNavigate, useLocation } from "react-router";
 import UseAuth from "../../hooks/UseAuth";

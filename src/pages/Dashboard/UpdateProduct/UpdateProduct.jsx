@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const UpdateProduct = () => {
   const { id } = useParams();
@@ -11,8 +13,7 @@ const UpdateProduct = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  // ✅ fetch single product by id
- // ✅ এখন id দিয়ে specific product আনবে
+  
 const { data: product, isLoading } = useQuery({
   queryKey: ["product", id],
   queryFn: async () => {
@@ -22,7 +23,7 @@ const { data: product, isLoading } = useQuery({
 });
 
 
-  // ✅ react-hook-form setup
+  //  react-hook-form setup
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const { data: product, isLoading } = useQuery({
     }
   }, [product, reset]);
 
-  // ✅ mutation for update
+  //  mutation for update
   const mutation = useMutation({
     mutationFn: async (updatedProduct) => {
       const res = await axiosSecure.patch(`/productUp/${id}`, updatedProduct);
@@ -59,10 +60,13 @@ const { data: product, isLoading } = useQuery({
     mutation.mutate(updatedProduct);
   };
 
-  if (isLoading) return <p className="text-center">Loading product...</p>;
+  if (isLoading) return <Loading/>;
 
   return (
     <div className="flex justify-center items-center my-10 px-4">
+      <Helmet>
+        <title>UpdateProduct || page</title>
+      </Helmet>
       <div className="w-full max-w-2xl mx-auto bg-white shadow-2xl rounded-2xl p-8 border border-blue-400">
         <h2 className="text-3xl font-extrabold text-center mb-6">
           ✨ Update Product

@@ -78,7 +78,7 @@ const ManageUsers = () => {
 
   return (
     <div className="p-5">
-      <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
+      <h2 className="text-2xl font-bold mb-4 text-[#1A535C]">Manage Users</h2>
       <Helmet>
         <title>ManageUsers || page</title>
       </Helmet>

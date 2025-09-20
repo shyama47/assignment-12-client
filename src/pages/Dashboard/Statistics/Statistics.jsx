@@ -1,10 +1,17 @@
+
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-
-
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const Statistics = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,7 +22,7 @@ const Statistics = () => {
     queryFn: async () => {
       const [productsRes, reviewsRes, usersRes] = await Promise.all([
         axiosSecure.get("/products"),
-        axiosSecure.get("/reviews/all"), 
+        axiosSecure.get("/reviews/all"),
         axiosSecure.get("/users"),
       ]);
 
@@ -40,7 +47,7 @@ const Statistics = () => {
   });
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   // Pie Chart Data
@@ -55,10 +62,15 @@ const Statistics = () => {
   const COLORS = ["#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#1A535C"];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 ">
+    <div className="min-h-screen p-6">
+      <Helmet>
+        <title>AdminStatistics || page</title>
+      </Helmet>
+
       <h2 className="text-3xl font-bold text-center text-[#1A535C] mb-8">
         📊 Admin Statistics
       </h2>
+
       <div className="bg-white shadow-lg rounded-2xl p-6">
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>
@@ -66,10 +78,11 @@ const Statistics = () => {
               data={chartData}
               cx="50%"
               cy="50%"
-            //   labelLine={false}
               outerRadius={120}
               dataKey="value"
-              label={({ name, value }) => `${name}: ${value}`}
+              label={({ name, value }) =>
+                window.innerWidth >= 768 ? `${name}: ${value}` : ""
+              }
             >
               {chartData.map((entry, index) => (
                 <Cell
@@ -82,6 +95,19 @@ const Statistics = () => {
             <Legend />
           </PieChart>
         </ResponsiveContainer>
+
+        {/* Small device summary list */}
+        <div className="mt-6 md:hidden">
+          <h3 className="text-lg font-semibold mb-2">Statistics Summary</h3>
+          <ul className="space-y-1 text-gray-700">
+            {chartData.map((item, idx) => (
+              <li key={idx} className="flex justify-between">
+                <span>{item.name}</span>
+                <span className="font-bold">{item.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

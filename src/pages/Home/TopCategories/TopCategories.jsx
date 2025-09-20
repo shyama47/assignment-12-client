@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const TopCategories = () => {
   const categories = [
@@ -9,20 +10,34 @@ const TopCategories = () => {
   ];
 
   return (
-    <section className="max-w-6xl w-full mx-auto ">
-      <h2 className="text-3xl font-bold text-center my-12 text-[#1A535C]">
-         Top Categories
-      </h2>
-      <div className="grid  grid-cols-2 md:grid-cols-4 gap-8 px-6">
+    <section className="max-w-7xl w-full mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      {/* Section Title */}
+      <motion.h2
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A535C]"
+      >
+        🌟 Top Categories
+      </motion.h2>
+
+      {/* Categories Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {categories.map((cat, idx) => (
-          <div
+          <motion.div
             key={idx}
-            className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition border border-yellow-200"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: idx * 0.2 }}
+            // viewport={{ once: true }}
+            whileHover={{ scale: 1.05 }}
+            className="bg-white rounded-2xl shadow-md p-6 text-center border border-yellow-200"
           >
-            <div className="text-5xl mb-4">{cat.icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{cat.name}</h3>
-            <p className="text-gray-600">{cat.desc}</p>
-          </div>
+            <div className="text-4xl sm:text-5xl mb-4">{cat.icon}</div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">{cat.name}</h3>
+            <p className="text-gray-600 text-sm sm:text-base">{cat.desc}</p>
+          </motion.div>
         ))}
       </div>
     </section>
