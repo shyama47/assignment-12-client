@@ -99,9 +99,9 @@ const Footer = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         // viewport={{ once: true }}
-        className="mt-6 text-center text-[#1A535C] text-sm border-t border-[#1A535C]/30 pt-7"
+        className="mt-6 text-center text-[#1A535C] text-sm border-t-2 border-[#1A535C]  pt-7"
       >
-        © {new Date().getFullYear()} MyShop. All Rights Reserved.
+        © {new Date().getFullYear()} App Orbit. All Rights Reserved.
       </motion.div>
     </footer>
   );

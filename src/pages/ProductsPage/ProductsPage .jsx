@@ -55,11 +55,11 @@ const axiosInstance = useAxiosInstance();
           No products found for your search.
         </p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
           {filteredProducts.map((product) => (
             <div
               key={product._id}
-              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-5 border border-gray-100 flex flex-col"
+              className=" bg-white rounded-2xl shadow-md hover:shadow-lg transition p-5 border border-gray-100 flex flex-col"
             >
               <img
                 src={product.image}

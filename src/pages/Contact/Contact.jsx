@@ -32,7 +32,7 @@ const Contact = () => {
         <h2 className="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-[#FF6B6B] to-[#FFE66D] text-transparent bg-clip-text">
           📩 Get in Touch
         </h2>
-
+       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
          {/* Contact Info */}
           <div className=" p-6 flex flex-col justify-center space-y-5 ">

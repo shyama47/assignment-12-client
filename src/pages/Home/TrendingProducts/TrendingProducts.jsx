@@ -27,10 +27,13 @@ const TrendingProducts = () => {
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl font-bold text-center mb-10 text-[#1A535C]"
+        className="text-4xl font-bold text-center mb-4 text-[#1A535C]"
       >
         Trending Products
       </motion.h2>
+      <p className="text-gray-500 text-sm italic max-w-2xl mx-auto text-center mb-10">
+          Discover the most loved innovations that are capturing attention across our community — products voted by real users for their creativity, performance, and impact in the digital world
+        </p>
 
       {/* Products Grid with Staggered Animation */}
       <motion.div
@@ -117,3 +120,6 @@ const TrendingProducts = () => {
 };
 
 export default TrendingProducts;
+
+
+

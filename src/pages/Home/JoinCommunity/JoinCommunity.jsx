@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router";
 
 const JoinCommunity = () => {
   const benefits = [
@@ -10,7 +11,8 @@ const JoinCommunity = () => {
   ];
 
   return (
-    <section className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section className="max-w-6xl w-full mx-auto px-4  my-20">
+    {/* <section className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 border"> */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -35,6 +37,12 @@ const JoinCommunity = () => {
               {item.title}
             </h3>
             <p className="text-gray-600 text-sm sm:text-base">{item.desc}</p>
+             <button className="my-6 px-6 py-3 bg-[#FF6B6B] hover:bg-[#1A535C] text-white font-semibold rounded-lg shadow-lg transition">
+                 <NavLink  
+                to='add-product'>
+                  Explore Now
+                </NavLink>
+               </button>
           </motion.div>
         ))}
       </div>

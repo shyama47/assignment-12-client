@@ -8,6 +8,10 @@ import JoinCommunity from './JoinCommunity/JoinCommunity';
 import HowItWorks from './HowItWorks/HowItWorks ';
 import CouponCarousel from './CouponCarousel/CouponCarousel';
 import { Helmet } from 'react-helmet-async';
+import TechStack from './TechStack';
+import FAQSection from './FAQSection';
+import Newsletter from './Newsletter';
+import ScrollToTop from './ScrollToTop';
 
 const Home = () => {
     return (
@@ -22,8 +26,11 @@ const Home = () => {
        <TopCategories />
        <HowItWorks />
        <SuccessStories />
-       <JoinCommunity />
-
+       {/* <JoinCommunity /> */}
+      <TechStack/>
+      <FAQSection/>
+      <Newsletter/>
+      <ScrollToTop/>
         </div>
     );
 };

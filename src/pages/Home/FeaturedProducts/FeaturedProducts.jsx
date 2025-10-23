@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
@@ -27,16 +26,19 @@ const FeaturedProducts = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 my-10">
+    <div className="max-w-6xl mx-auto px-4 my-16">
       {/* Section Title */}
-      <motion.h2
+   <div className="mb-10">
+       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold text-center mb-6 text-[#1A535C]"
+        className="text-2xl md:text-4xl font-bold text-center mb-4 text-[#1A535C]"
       >
         Featured Products
       </motion.h2>
+      <p className="text-gray-500 text-sm text-center max-w-2xl mx-auto">Explore our hand-picked selection of standout products that are making waves in the community — chosen for their innovation, popularity, and quality craftsmanship.</p>
+   </div>
 
       {/* Products Grid */}
       <motion.div

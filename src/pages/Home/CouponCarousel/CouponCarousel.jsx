@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../shared/Loading/Loading";
@@ -69,11 +68,11 @@ const CouponCarousel = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto my-10 px-4 sm:px-6 lg:px-8">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-[#1A535C]">
-        🎟️ Special Coupons
+    <div className="max-w-7xl mx-auto my-20 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-[#1A535C]">
+      Special Coupons
       </h2>
-
+      <p className="text-gray-500 text-sm text-center max-w-2xl mx-auto mb-10">Discover limited-time discounts and special offers designed to help you save more on every purchase you make today.</p>
       <Slider {...settings}>
         {coupons.map((coupon) => (
           <div key={coupon._id} className="p-3">

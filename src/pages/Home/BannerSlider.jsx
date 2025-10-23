@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import slider1 from '../../assets/slider5.png'
 import slider2 from '../../assets/slider4.png'
 import slider3 from '../../assets/slider3.png'
+import { NavLink } from "react-router";
 const BannerSlider = () => {
   const settings = {
     dots: true,
@@ -40,7 +41,7 @@ const BannerSlider = () => {
   ];
 
   return (
-    <div className="w-full mb-10 ">
+    <div className="w-full">
       <Slider {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="relative">
@@ -60,9 +61,12 @@ const BannerSlider = () => {
                 <p className="mt-4 text-lg md:text-xl">
                   {slide.desc}
                 </p>
-                <button className="my-6 px-6 py-3 bg-[#FF6B6B] hover:bg-[#1A535C] text-white font-semibold rounded-lg shadow-lg transition">
+               <button className="my-6 px-6 py-3 bg-[#FF6B6B] hover:bg-[#1A535C] text-white font-semibold rounded-lg shadow-lg transition">
+                 <NavLink  
+                to='products'>
                   Explore Now
-                </button>
+                </NavLink>
+               </button>
               </div>
             </div>
           </div>

@@ -2,11 +2,11 @@ import React from 'react';
 import useUserRole from '../../../hooks/useUserRole';
 import Loading from '../../shared/Loading/Loading';
 import UserDashboard from './UserDashboard';
-import AdminDashboard from './AdminDashboard';
 import ModeratorDashboard from './ModeratorDashboard';
 import ForbiddenPage from '../../Forbidden/Forbidden';
 
 import UseAuth from '../../../hooks/UseAuth';
+import AdminDashboard from './AdminDashboard';
 
 
 const DashboardHome = () => {
